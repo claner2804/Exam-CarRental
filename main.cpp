@@ -15,6 +15,6 @@ int main() {
     carRental.addCar(new FerrariF40);
     carRental.addCar(new FordFocus);
 
-    carRental.simulate(3);
+    carRental.simulate(29);
 
 }

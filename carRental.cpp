@@ -6,6 +6,7 @@
 #include "exceptions.h"
 #include <iostream>
 #include <map>
+#include <print>
 
 //Fügt ein neues Auto in std::map<int, Car*> cars hinzu. Der Rückgabewert ist eine eindeutige ID, die das Auto identifiziert
 int CarRental::addCar(Car *car) {
@@ -69,12 +70,28 @@ Car *CarRental::rentCar(int licenceType, int passengerCount) {
 //Simuliert die angegebene Anzahl an Mietvorgängen. Die Führerscheinklasse und die Anzahl an Passagieren soll dabei bei jedem Mietvorgang zufällig bestimmt werden.
 void CarRental::simulate(int rentals) {
 
+    std::cout << "die Mietprozesse starten!" << std::endl;
+
+    sleep(1);
+
     //für die Anzahl an Mietvorgängen
     for(int i = 0; i < rentals; i++) {
 
+        std::cout << "----------------------------------------------------" << std::endl;
+
+        std::cout << "Mietvorgang " << i+1 << std::endl;
+
+        std::cout << "----------------------------------------------------" << std::endl;
+
+        sleep(1);
+
         //zufällige Führerscheinklasse und Anzahl an Passagieren
         int licenceType = rand() % 5 + 1;
+        std::cout << "Führerscheinklasse: " << licenceType << std::endl;
         int passengerCount = rand() % 10 + 1;
+        std::cout << "Passagiere: " << passengerCount << std::endl;
+
+        std::cout << "versuche Auto zu mieten..." << std::endl;
 
         try {
             Car *car = rentCar(licenceType, passengerCount);
