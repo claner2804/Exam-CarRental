@@ -63,9 +63,9 @@ public:
 
     bool checkCar() override {
         if (isBrokenMotor()) {
-            throw BrokenMotorException("VW Bus checkCar() BrokenMotorException thrown.");
+            throw BrokenMotorException("VW Bus hat einen kaputten Motor.");
         } else if (isElectronicsFault()) {
-            throw ElectronicsFaultException("VW Bus checkCar() ElectronicsFaultException thrown.");
+            throw ElectronicsFaultException("VW Bus hat einen Elektronikfehler.");
         } else {
             return true;
         }
@@ -74,11 +74,11 @@ public:
 
 
     VwBus() {
-        std::cout << "VW Bus created" << std::endl;
+        std::cout << "VW Bus hinzugefügt" << std::endl;
     }
 
     ~VwBus() {
-        std::cout << "VW Bus destroyed" << std::endl;
+        std::cout << "VW Bus verkauft" << std::endl;
     }
 
 

@@ -68,11 +68,11 @@ public:
 
     bool checkCar() override {
         if (isBrokenMotor()) {
-            throw BrokenMotorException("fordFocus checkCar() BrokenMotorException thrown.");
+            throw BrokenMotorException("Ford Fokus hat einen Motorschaden");
         } else if (isElectronicsFault()) {
-            throw ElectronicsFaultException("fordFocus checkCar() ElectronicsFaultException thrown.");
+            throw ElectronicsFaultException("Ford Focus hat einen Elektronikschaden");
         }  else if (isEmissionsTooDirty()) {
-            throw EmissionsTooDirtyException("fordFocus checkCar() EmissionsTooDirtyException thrown.");
+            throw EmissionsTooDirtyException("Ford Focus hat zu dreckige Emissionen");
         }
         else {
             return true;
@@ -80,11 +80,11 @@ public:
     }
 
     FordFocus() {
-        std::cout << "Ford Focus created" << std::endl;
+        std::cout << "Ford Focus hinzugefügt" << std::endl;
     }
 
     ~FordFocus() {
-        std::cout << "Ford Focus destroyed" << std::endl;
+        std::cout << "Ford Focus verkauft" << std::endl;
     }
 };
 

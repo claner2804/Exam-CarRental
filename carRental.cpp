@@ -118,11 +118,11 @@ void CarRental::simulate(int rentals) {
             std::cout << e.what() << std::endl;
         } catch(BrokenMotorException &e) {
             std::cout << e.what() << std::endl;
-            std::cout << "Auto brokenmotor wird aus dem System entfernt." << std::endl;
+            std::cout << "Motor kaputt! Auto wird aus dem System entfernt und verschrottet!" << std::endl;
             i--; // retry the rental
         } catch(ElectronicsFaultException &e) {
             std::cout << e.what() << std::endl;
-            std::cout << "Auto electronicsfault wird aus dem System entfernt." << std::endl;
+            std::cout << "Elektronik kaputt! Auto wird aus dem System entfernt und verschrottet" << std::endl;
             i--; // retry the rental
         } catch(EmissionsTooDirtyException &e) {
             std::cout << e.what() << std::endl;

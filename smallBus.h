@@ -26,6 +26,15 @@ class SmallBus : public Car{
 
 public:
 
+    //konstruktoren und destruktoren
+    SmallBus() {
+        std::cout << "Small Bus hinzugefügt" << std::endl;
+    }
+
+    ~SmallBus() {
+        std::cout << "Small Bus verkauft" << std::endl;
+    }
+
     virtual std::string getName() override {
         return name;
     }
@@ -67,13 +76,13 @@ public:
 
     bool checkCar() override {
         if (isBrokenMotor()) {
-            throw BrokenMotorException("SmallBus checkCar() BrokenMotorException thrown.");
+            throw BrokenMotorException("SmallBus hat einen Motorschaden");
         }
         if (isElectronicsFault()) {
-            throw ElectronicsFaultException("SmallBus checkCar() ElectronicsFaultException thrown.");
+            throw ElectronicsFaultException("SmallBus hat einen Elektronikschaden");
         }
         if (isEmissionsTooDirty()) {
-            throw EmissionsTooDirtyException("SmallBus checkCar() EmissionsTooDirtyException thrown.");
+            throw EmissionsTooDirtyException("SmallBus hat zu dreckige Emissionen");
         }
         return true;
     }

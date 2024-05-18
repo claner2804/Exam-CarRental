@@ -26,6 +26,15 @@ class FerrariF40 : public Car{
 
     public:
 
+    //konstruktor und destruktor
+    FerrariF40() {
+        std::cout << "Ferrari F40 hinzugefügt" << std::endl;
+    }
+
+    ~FerrariF40() {
+        std::cout << "Ferrari F40 verkauft" << std::endl;
+    }
+
     virtual std::string getName() override {
         return name;
     }
