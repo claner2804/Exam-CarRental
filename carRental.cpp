@@ -28,6 +28,10 @@ void CarRental::deleteCar(int id) {
     if(cars.find(id) == cars.end()) {
         throw InvalidCarException("Car *CarRental::deleteCar Auto existiert nicht");
     }
+    std::string carName = cars[id]->getName();
+
+    std::cout << "Auto mit ID " << id << " und Name " << carName << " wurde aus der Verwaltungssoftware gelöscht." << std::endl;
+
     cars.erase(id);
 }
 
@@ -49,18 +53,30 @@ Car *CarRental::rentCar(int licenceType, int passengerCount) {
 
     for(auto &car : cars) {
         if(car.second->getRequiredDrivingLicense() <= licenceType &&
-           car.second->getPassengerCount() >= passengerCount &&
-           car.second->checkCar()) {
-            int freeSeats = car.second->getPassengerCount() - passengerCount;
-            if(bestCar == nullptr || freeSeats < bestFreeSeats) {
-                bestCar = car.second;
-                bestFreeSeats = freeSeats;
+           car.second->getPassengerCount() >= passengerCount) {
+            try {
+                if(car.second->checkCar()) {
+                    int freeSeats = car.second->getPassengerCount() - passengerCount;
+                    if(bestCar == nullptr || freeSeats < bestFreeSeats) {
+                        bestCar = car.second;
+                        bestFreeSeats = freeSeats;
+                    }
+                }
+            } catch(BrokenMotorException &e) {
+                deleteCar(car.first); // remove the car from the system
+                throw; // rethrow the exception
+            } catch(ElectronicsFaultException &e) {
+                deleteCar(car.first); // remove the car from the system
+                throw; // rethrow the exception
+            } catch(EmissionsTooDirtyException &e) {
+                // do not remove the car from the system
             }
         }
     }
 
     if(bestCar == nullptr) {
-        throw NoCarFoundException("Car *CarRental::rentCar Kein passendes Auto gefunden");
+        std::cout << "Auto mit Führerscheinklasse " << licenceType << " und " << passengerCount << " nicht existent." << std::endl;
+        throw NoCarFoundException("Kein passendes Auto gefunden.");
     }
 
     return bestCar;
@@ -102,10 +118,33 @@ void CarRental::simulate(int rentals) {
             std::cout << e.what() << std::endl;
         } catch(BrokenMotorException &e) {
             std::cout << e.what() << std::endl;
+            std::cout << "Auto brokenmotor wird aus dem System entfernt." << std::endl;
+            i--; // retry the rental
         } catch(ElectronicsFaultException &e) {
             std::cout << e.what() << std::endl;
+            std::cout << "Auto electronicsfault wird aus dem System entfernt." << std::endl;
+            i--; // retry the rental
         } catch(EmissionsTooDirtyException &e) {
             std::cout << e.what() << std::endl;
         }
-    }
+        }
+}
+
+CarRental::CarRental() {
+    std::cout << "----------------------------------------------------" << std::endl;
+    std::cout << "Die Autovermietung eröffnet feierlich seine Pforten.." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
+
+
+}
+
+
+CarRental::~CarRental() {
+    std::cout << "----------------------------------------------------" << std::endl;
+    std::cout << "Die Autovermietung schließt..." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
+
+
 }

@@ -23,6 +23,12 @@ protected:
     std::map<int, Car*> cars;
 
 public:
+
+    //Konstruktor und Destruktor
+    CarRental();
+    ~CarRental();
+
+
     //Fügt ein neues Auto hinzu. Der Rückgabewert ist eine eindeutige ID, die das Auto identifiziert.
     int addCar(Car* car);
 
