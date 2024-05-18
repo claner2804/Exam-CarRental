@@ -50,14 +50,29 @@ public:
         }
     }
 
+    //Eine EmissionsTooDirtyException kann bei diesem Fahrzeug nicht vorkommen.
+    bool isEmissionsTooDirty()  {
+        return false;
+    }
+
     bool checkCar() override {
         if (isBrokenMotor()) {
-            throw BrokenMotorException();
+            throw BrokenMotorException("VW Bus checkCar() BrokenMotorException thrown.");
         } else if (isElectronicsFault()) {
-            throw ElectronicsFaultException();
+            throw ElectronicsFaultException("VW Bus checkCar() ElectronicsFaultException thrown.");
         } else {
             return true;
         }
+    }
+
+
+
+    VwBus() {
+        std::cout << "VW Bus created" << std::endl;
+    }
+
+    ~VwBus() {
+        std::cout << "VW Bus destroyed" << std::endl;
     }
 
 
