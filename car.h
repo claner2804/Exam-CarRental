@@ -15,7 +15,7 @@ class Car {
 public:
 
     //Gibt den Namen des Autos zurück.
-    virtual std::string getName() const = 0;
+    virtual std::string getName() = 0;
 
 
     //Überprüft die Fahrtüchtigkeit des Autos

@@ -26,7 +26,7 @@ class FerrariF40 : public Car{
 
     public:
 
-    std::string getName() const {
+    virtual std::string getName() override {
         return name;
     }
 
