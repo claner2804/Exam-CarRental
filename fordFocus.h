@@ -23,7 +23,13 @@ class FordFocus : public Car{
 
     int requiredDriversLicense = 1;
 
+    std::string name = "Ford Focus";
+
 public:
+
+    std::string getName() const {
+        return name;
+    }
 
     int getRequiredDrivingLicense() override {
         return requiredDriversLicense;

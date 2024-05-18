@@ -5,11 +5,19 @@
 #ifndef KLAUSUR_CAR_H
 #define KLAUSUR_CAR_H
 
-#include "carRental.h"
+#include <stdexcept>
+#include "exceptions.h"
 
-class Car : public CarRental{ //todo: check if inheritance is correct
+class Car {
+
+
 
 public:
+
+    //Gibt den Namen des Autos zurück.
+    virtual std::string getName() const = 0;
+
+
     //Überprüft die Fahrtüchtigkeit des Autos
     // und gibt true zurück, wenn die Fahrtüchtigkeit gegeben ist.
     // Bei gefundenen Problemen wird eine Exception geworfen

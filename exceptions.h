@@ -19,22 +19,31 @@ public:
 
 class BrokenMotorException : public CarRentalException {
 public:
-    explicit BrokenMotorException(const std::string& message) : FireException(message) {}
+    explicit BrokenMotorException(const std::string& message) : CarRentalException(message) {}
 
 };
 
 
 class ElectronicsFaultException   : public CarRentalException {
 public:
-    explicit ElectronicsFaultException (const std::string& message) : FireException(message) {}
+    explicit ElectronicsFaultException (const std::string& message) : CarRentalException(message) {}
 
 };
 
 class EmissionsTooDirtyException : public CarRentalException {
 public:
-    explicit EmissionsTooDirtyException(const std::string& message) : FireException(message) {}
+    explicit EmissionsTooDirtyException(const std::string& message) : CarRentalException(message) {}
 };
 
+class NoCarFoundException : public CarRentalException {
+public:
+    explicit NoCarFoundException(const std::string& message) : CarRentalException(message) {}
+};
+
+class InvalidCarException : public CarRentalException {
+public:
+    explicit InvalidCarException(const std::string& message) : CarRentalException(message) {}
+};
 
 
 

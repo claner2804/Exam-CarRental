@@ -22,7 +22,13 @@ class FerrariF40 : public Car{
 
         int requiredDriversLicense = 3;
 
+        std::string name = "Ferrari F40";
+
     public:
+
+    std::string getName() const {
+        return name;
+    }
 
             int getRequiredDrivingLicense() override {
                 return requiredDriversLicense;

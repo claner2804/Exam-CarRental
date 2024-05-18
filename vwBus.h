@@ -22,7 +22,13 @@ class VwBus : public Car{
 
     int requiredDriversLicense = 2;
 
+    std::string name = "VW Bus";
+
 public:
+
+    std::string getName() const {
+        return name;
+    }
 
     int getRequiredDrivingLicense() override {
         return requiredDriversLicense;
