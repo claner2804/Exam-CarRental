@@ -124,8 +124,12 @@ void CarRental::simulate(int rentals) {
             std::cout << e.what() << std::endl;
             std::cout << "Elektronik kaputt! Auto wird aus dem System entfernt und verschrottet" << std::endl;
             i--; // retry the rental
+            //Bei zu hohen Abgaswerten (EmissionsTooDirtyException) wird angenommen,
+            // dass das nur vorübergehend ist, d.h. es wird nicht aus der Verwaltungssoftware gelöscht
+            // und die Fahrtüchtigkeit beim nächsten Verleihvorgang nochmals überprüft.
         } catch(EmissionsTooDirtyException &e) {
             std::cout << e.what() << std::endl;
+            std::cout << "Abgaswerte zu hoch! Auto wird nicht aus dem System entfernt  und die Fahrtüchtigkeit beim nächsten Verleihvorgang nochmals überprüft." << std::endl;
         }
         }
 }
